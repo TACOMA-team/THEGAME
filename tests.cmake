@@ -21,7 +21,7 @@ if(CHECK_FOUND)
     macro(thegame_add_test TEST_NAME) 
         add_executable(${TEST_NAME} EXCLUDE_FROM_ALL src/test/c/${TEST_NAME}.c)
         target_link_libraries(${TEST_NAME} THEGAME ${CHECK_LIBRARIES})
-        add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
+        add_test(NAME ${TEST_NAME} WORKING_DIRECTORY ${PROJECT_BINARY_DIR} COMMAND ${TEST_NAME})
         set(test_binaries ${test_binaries} ${TEST_NAME})
     endmacro(thegame_add_test)
 
@@ -40,8 +40,8 @@ if(CHECK_FOUND)
     endif(LIBXML2_FOUND)
 
     add_custom_target(unit_test ALL 
-    cmake -E remove_directory ${CMAKE_BINARY_DIR}/data
-    COMMAND cmake -E copy_directory ${CMAKE_SOURCE_DIR}/src/test/resources/data ${CMAKE_BINARY_DIR}/data
+    cmake -E remove_directory ${PROJECT_BINARY_DIR}/data
+    COMMAND cmake -E copy_directory ${PROJECT_SOURCE_DIR}/src/test/resources/data ${PROJECT_BINARY_DIR}/data
     COMMAND ctest --output-on-failure
     DEPENDS THEGAME ${test_binaries}
     COMMENT "\n\n   ===== TESTS =====   \n\n"
