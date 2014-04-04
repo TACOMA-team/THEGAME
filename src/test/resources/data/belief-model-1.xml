@@ -21,7 +21,7 @@
 				<mass set="B">0.5</mass>
 				<mass set="C">0.10</mass>
 				<mass set="A B">0.15</mass>
-			</point>pro
+			</point>
 			<point>
 				<value>300.0</value>
 				<mass set="A">0.75</mass>
@@ -61,7 +61,7 @@
 				<mass set="B">0.5</mass>
 				<mass set="C">0.10</mass>
 				<mass set="A B">0.15</mass>
-			</point>pro
+			</point>
 			<point>
 				<value>300.0</value>
 				<mass set="A">0.75</mass>
@@ -101,7 +101,7 @@
 				<mass set="B">0.5</mass>
 				<mass set="C">0.10</mass>
 				<mass set="A B">0.15</mass>
-			</point>pro
+			</point>
 			<point>
 				<value>300.0</value>
 				<mass set="A">0.75</mass>
