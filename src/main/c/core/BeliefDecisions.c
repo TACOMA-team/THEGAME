@@ -14,9 +14,11 @@
  * limitations under the License.
  */
  
-
+#include <stdlib.h>
+#include <stdio.h>
 
 #include "BeliefDecisions.h"
+#include "config.h"
 
 
 /**

@@ -15,9 +15,14 @@
  */
  
 
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <math.h>
 
 #include "BeliefsFromBeliefs.h"
-
+#include "ReadDirectory.h"
+#include "ReadFile.h"
 
 /**
  * @section BFB_intro Introduction

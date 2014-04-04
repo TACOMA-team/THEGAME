@@ -19,8 +19,6 @@
 #define DEF_BELIEFSFROMBELIEFS
 
 #include "BeliefFunctions.h"
-#include "ReadDirectory.h"
-#include "ReadFile.h"
 
 
 

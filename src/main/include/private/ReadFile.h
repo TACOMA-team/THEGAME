@@ -17,9 +17,6 @@
 
 #ifndef DEF_READFILE
 #define DEF_READFILE
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "config.h"
 
 /**

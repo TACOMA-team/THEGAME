@@ -18,14 +18,9 @@
 #ifndef DEF_BELIEFSFROMSENSORS
 #define DEF_BELIEFSFROMSENSORS
 
-
 #include <time.h>
-#include <ctype.h>
-#include <errno.h>
 
-#include "ReadDirectory.h"
-#include "ReadFile.h"
-#include "BeliefCombinations.h"
+#include "BeliefFunctions.h"
 
 /**
  * @section BFS_intro Introduction

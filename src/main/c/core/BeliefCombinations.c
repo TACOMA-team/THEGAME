@@ -25,10 +25,11 @@
  * @brief CORE: Gives functions to combine belief functions.
  */
 
+#include <stdlib.h>
+#include <stdio.h>
 
 #include "BeliefCombinations.h"
-
-
+#include "config.h"
 
 /**
  * @name Combination rules

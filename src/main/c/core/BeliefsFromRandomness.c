@@ -15,7 +15,11 @@
  */
 
 
-
+#include <stdint.h>
+#include <ctype.h>
+#include <time.h>
+#include <stdlib.h>
+#include <math.h>
 
 #include "BeliefsFromRandomness.h"
 

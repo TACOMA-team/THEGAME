@@ -21,7 +21,7 @@
 
 #include "XmlBeliefFromSensors.h"
 #include "BeliefFunctions.h"
-
+#include "config.h"
 
 /*
  * @param context xpath context for the document

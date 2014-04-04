@@ -15,7 +15,15 @@
  */
 
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <dirent.h>
+
+
+#include "config.h"
 #include "ReadDirectory.h"
+
 
 /**
  * @file ReadDirectory.c

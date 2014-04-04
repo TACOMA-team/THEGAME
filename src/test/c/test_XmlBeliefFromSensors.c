@@ -16,6 +16,7 @@
 
 
 #include <check.h>
+#include <stdlib.h>
 
 
 #include "XmlBeliefFromSensors.h"

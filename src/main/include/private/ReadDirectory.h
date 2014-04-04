@@ -17,12 +17,6 @@
 
 #ifndef DEF_READDIRECTORY
 #define DEF_READDIRECTORY
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <dirent.h>
-#include "config.h"
-
 /**
  * @file ReadDirectory.h
  * @author Bastien Pietropaoli (bastien.pietropaoli@inria.fr)

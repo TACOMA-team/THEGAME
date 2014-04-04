@@ -15,7 +15,14 @@
  */
 
 
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+
 #include "BeliefFunctions.h"
+#include "config.h"
 
 /**
  * This module does not enable the building of belief functions but only to manipulate them!

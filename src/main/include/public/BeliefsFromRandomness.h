@@ -19,9 +19,6 @@
 #define DEF_BELIEFSFROMRANDOMNESS
 
 #include "BeliefFunctions.h"
-#include <stdint.h>
-#include <ctype.h>
-#include <time.h>
 
 /**
  * This module provides with methods to randomly generate mass functions. It is roughly based on common

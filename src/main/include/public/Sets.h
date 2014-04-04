@@ -18,10 +18,6 @@
 #ifndef DEF_SETS
 #define DEF_SETS
 
-#include <math.h>
-
-#include "ReadFile.h"
-#include "config.h"
 
 /**
  * @file Sets.h

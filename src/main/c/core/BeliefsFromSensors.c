@@ -14,9 +14,17 @@
  * limitations under the License.
  */
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <errno.h>
+#include <ctype.h>
 
+#include "config.h"
+#include "ReadDirectory.h"
+#include "ReadFile.h"
 #include "BeliefsFromSensors.h"
-
+#include "BeliefCombinations.h"
 
 /**
  * @section BFS_intro Introduction
