@@ -316,55 +316,53 @@ BFS_BeliefStructure BFS_loadBeliefStructure(const char* directory, const char* f
     char** directories = NULL;
     int i = 0;
 
-    /*Test if the CA exists: */
-    strcpy(path, directory);       /* The directory where to find the CAs */
-    strcat(path, frameName);      /* The name of the CA */
-    if(ReadDir_isDirectory(path)){
-        /*Copy the context attribute name: */
-        bs.frameName = malloc(sizeof(char)*(strlen(frameName) + 1));
-        DEBUG_CHECK_MALLOC(bs.frameName);
+    snprintf(path, MAX_SIZE_PATH, "%s/%s",directory,frameName);
 
-        strcpy(bs.frameName, frameName);
-        strcat(bs.frameName, "\0");
-        /*Creation of the path to load the set: */
-        strcat(path, "/");         /* Enter the directory... */
-        strcat(path,BFS_VALUES_NAME);  /* The name of the file containing the values */
-        /*Load the reference list: */
-        bs.refList = Sets_loadRefList(path);
-        /*Create the set: */
-        bs.possibleValues = Sets_createSetFromRefList(bs.refList);
-        /*Create the powerset: */
-        bs.powerset = Sets_createPowerSet(bs.possibleValues);
-        /*Get the number of sensors: */
-        strcpy(path, directory);     /* The directory where to find the CAs */
-        strcat(path, frameName);      /* The name of the CA */
-        bs.nbSensors = ReadDir_countDirectories(path);
-        /*Get the directories:*/
-        charsPerDir = ReadDir_charsPerDirectory(path, bs.nbSensors);
-        directories = ReadDir_getDirectories(path, bs.nbSensors, charsPerDir);
-        /*Load the sensors' beliefs: */
-        bs.beliefs = malloc(sizeof(BFS_SensorBeliefs)*bs.nbSensors);
-        DEBUG_CHECK_MALLOC(bs.beliefs);
+    if(!ReadDir_isDirectory(path)) {
+		#ifdef DEBUG
+    	printf("debug: Error opening the directory %s.\n", path);
+		#endif
+    	return bs;
+    }
 
-        for(i = 0; i<bs.nbSensors; i++){
-            strcpy(path, directory);       /* The directory where to find the CAs */
-            strcat(path, frameName);      /* The name of the CA */
-            strcat(path, "/");            /* Enter the directory... */
-            strcat(path, directories[i]);         /* Name of the directory */
-            bs.beliefs[i] = BFS_loadSensorBeliefs(directories[i], path, bs.refList);
-        }
-        /*Deallocate: */
-        free(charsPerDir);
-        for(i = 0; i<bs.nbSensors; i++){
-            free(directories[i]);
-        }
-        free(directories);
-    }
-    #ifdef DEBUG
-    else {
-        printf("debug: Error opening the directory %s.\n", path);
-    }
-    #endif
+    /*Get the number of sensors: */
+    bs.nbSensors = ReadDir_countDirectories(path);
+	/*Get the directories:*/
+    charsPerDir = ReadDir_charsPerDirectory(path, bs.nbSensors);
+    directories = ReadDir_getDirectories(path, bs.nbSensors, charsPerDir);
+	/*Copy the context attribute name: */
+	bs.frameName = strdup(frameName);
+	DEBUG_CHECK_MALLOC(bs.frameName);
+
+	/*Creation of the path to load the set: */
+	strcat(path, "/");         /* Enter the directory... */
+	strcat(path,BFS_VALUES_NAME);  /* The name of the file containing the values */
+	/*Load the reference list: */
+	bs.refList = Sets_loadRefList(path);
+	/*Create the set: */
+	bs.possibleValues = Sets_createSetFromRefList(bs.refList);
+	/*Create the powerset: */
+	bs.powerset = Sets_createPowerSet(bs.possibleValues);
+
+	/*Load the sensors' beliefs: */
+	bs.beliefs = malloc(sizeof(BFS_SensorBeliefs)*bs.nbSensors);
+	DEBUG_CHECK_MALLOC(bs.beliefs);
+
+	for(i = 0; i<bs.nbSensors; i++){
+		strcpy(path, directory);       /* The directory where to find the CAs */
+        strcat(path, "/");
+		strcat(path, frameName);      /* The name of the CA */
+		strcat(path, "/");            /* Enter the directory... */
+		strcat(path, directories[i]);         /* Name of the directory */
+		bs.beliefs[i] = BFS_loadSensorBeliefs(directories[i], path, bs.refList);
+	}
+	/*Deallocate: */
+	free(charsPerDir);
+	for(i = 0; i<bs.nbSensors; i++){
+		free(directories[i]);
+	}
+	free(directories);
+
 
     return bs;
 }
